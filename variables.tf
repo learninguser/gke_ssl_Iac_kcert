@@ -1,5 +1,5 @@
 variable "project" {
-  default     = "guru-playground"
+  default     = "kkgcporg01-009"
   description = "The project ID"
 }
 
