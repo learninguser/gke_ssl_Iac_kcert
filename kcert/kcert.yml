@@ -93,7 +93,7 @@ spec:
         - name: ACME__TERMSACCEPTED
           value: "true"
         - name: ACME__EMAIL
-          value: "webtechguru@gmail.com"
+          value: "akulapavankumarece@gmail.com"
 ---
 apiVersion: v1
 kind: Service
