@@ -4,9 +4,10 @@ metadata:
   name: kcert-ingress
   labels:
     kcert.dev/ingress: "managed"
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
+  # annotations:
+  #   kubernetes.io/ingress.class: "nginx"
 spec:
+  ingressClassName: nginx
   tls:
   - hosts:
     - kcert.learninguser.shop # Change the word agileguru.org to your domain name
