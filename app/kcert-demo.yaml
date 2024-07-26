@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - kcert.agileguru.org # Change the word agileguru.org to your domain name
-    secretName: kcert-agileguru-org # Change the word agileguru-org to your domain name
+    - kcert.learninguser.shop # Change the word agileguru.org to your domain name
+    secretName: kcert-learninguser-shop # Change the word agileguru-org to your domain name
   rules:
-  - host: kcert.agileguru.org # Change the word agileguru.org to your domain name
+  - host: kcert.learninguser.shop # Change the word agileguru.org to your domain name
     http:
       paths:
       - path: /
