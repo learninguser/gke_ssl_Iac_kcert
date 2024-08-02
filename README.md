@@ -10,52 +10,60 @@
     * > eksctl create cluster -f eks.yaml
     * > eksctl delete cluster -f eks.yaml
 
-1. **Ingress Controller setup (if not done already)**
+2. **Ingress Controller setup (if not done already)**
     * > helm repo add ingress-nginx [https://kubernetes.github.io/ingress-nginx](https://kubernetes.github.io/ingress-nginx)
     * > helm repo update ingress-nginx
     * > helm install nginx-ingress ingress-nginx/ingress-nginx
     * > kubectl delete -A ValidatingWebhookConfiguration nginx-ingress-ingress-nginx-admission
 
-1. **Update DNS**
+3. **Update DNS**
     * > kubectl get svc
 
         ```text
-        NAME                                       TYPE           CLUSTER-IP    EXTERNAL-IP
-        nginx-ingress-ingress-nginx-controller     LoadBalancer   10.52.0.17    35.239.122.122
+        NAME                                               TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)                      AGE
+        kubernetes                                         ClusterIP      10.100.0.1       <none>                                                                   443/TCP                      15m
+        nginx-ingress-ingress-nginx-controller             LoadBalancer   10.100.39.202    a2a11ea50ada143ae9a5524d86e0c015-162498528.us-east-1.elb.amazonaws.com   80:30852/TCP,443:31669/TCP   91s
+        nginx-ingress-ingress-nginx-controller-admission   ClusterIP      10.100.192.162   <none>                                                                   443/TCP                      91s
         ```
 
-    * > Get the public ip address and update dns for the hosts in your ingress
-1. **Kcert Setup**
+    * > Update dns for the hosts in your ingress
+
+4. **Kcert Setup**
     * > kubectl create -f kcert/kcert.yml
 
-1. **Kcert Check**
+5. **Kcert Check**
     * > kubectl get all -n kcert
 
         ```text
         NAME                        READY   STATUS    RESTARTS   AGE
-        pod/kcert-6ffbb9bf9-47979   1/1     Running   0          15h
+        pod/kcert-df6b5fb7f-7srnc   1/1     Running   0          14s
 
-        NAME            TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)           AGE
-        service/kcert   ClusterIP   10.52.12.2   <none>        80/TCP,8080/TCP   15h
+        NAME            TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)           AGE
+        service/kcert   ClusterIP   10.100.3.221   <none>        80/TCP,8080/TCP   14s
 
         NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
-        deployment.apps/kcert   1/1     1            1           15h
+        deployment.apps/kcert   1/1     1            1           14s
 
         NAME                              DESIRED   CURRENT   READY   AGE
-        replicaset.apps/kcert-6ffbb9bf9   1         1         1       15h
+        replicaset.apps/kcert-df6b5fb7f   1         1         1       14s
         ```
 
-1. **Create ingress**
+6. **Create ingress**
     * > kubectl create -f app/app.yaml
     * > kubectl create -f app/kcert-demo.yaml
     * > kubectl get secrets -A
 
         ```text
-        NAME                         TYPE                  
-        kcert-learninguser-shop      kubernetes.io/tls
+        NAMESPACE   NAME                                    TYPE                 DATA   AGE
+        default     kcert-learninguser-shop                 kubernetes.io/tls    2      38s
+        default     nginx-ingress-ingress-nginx-admission   Opaque               3      11m
+        default     sh.helm.release.v1.nginx-ingress.v1     helm.sh/release.v1   1      11m
+        default     sh.helm.release.v1.nginx-ingress.v2     helm.sh/release.v1   1      10m
         ```
 
-1. **Check Your app**
+7. **Check Your app**
     * Open Your App in the browser [https://kcert.learninguser.shop](https://learninguser.shop)
+    * <img src="./images/kcert_k8s.png" width="600">
     * Should show valid certificate 😀
     * Certificate issued by [https://letsencrypt.org/](https://letsencrypt.org/)
+    * <img src="./images/ssl_eks_k8s.jpeg" height="600">
