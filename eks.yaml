@@ -19,10 +19,6 @@ vpc:
         id: "subnet-0f21bec0a4e3861af"
         cidr: "172.31.0.0/20" # (optional, must match CIDR used by the given subnet)
 
-      eu-north-1c:
-        id: "subnet-00f71956cdec8f1dc"
-        cidr: "192.168.0.0/19" # (optional, must match CIDR used by the given subnet)
-
 managedNodeGroups:
   - name: spot
     instanceType: t3.medium
