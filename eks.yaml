@@ -5,8 +5,6 @@ metadata:
   name: ssl-kcert
   region: us-east-1
 
-availabilityZones: ["us-east-1a", "us-east-1b"]
-
 vpc:
   id: "vpc-03c4f5328ede5d499" # (optional, must match VPC ID used for each subnet below)
   cidr: "172.31.0.0/16" # (optional, must match CIDR used by the given VPC)
