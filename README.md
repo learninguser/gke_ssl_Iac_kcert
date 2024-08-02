@@ -1,14 +1,14 @@
 # Assumption
 
 * You have a public DNS for your website
-* Use are using ingress controller like nginx
+* You are using ingress controller like nginx
 * You have kubectl access to the cluster  
 
 ## Installation
 
-1. **Terraform IAC for creating k8s cluster**
-    * > terraform init
-    * > terraform apply
+1. **Create k8s cluster using eksctl**
+    * > eksctl create cluster -f eks.yaml
+    * > eksctl delete cluster -f eks.yaml
 
 1. **Ingress Controller setup (if not done already)**
     * > helm repo add ingress-nginx [https://kubernetes.github.io/ingress-nginx](https://kubernetes.github.io/ingress-nginx)
@@ -51,11 +51,11 @@
     * > kubectl get secrets -A
 
         ```text
-        NAME                     TYPE                  
-        kcert-agileguru-org      kubernetes.io/tls
+        NAME                         TYPE                  
+        kcert-learninguser-shop      kubernetes.io/tls
         ```
 
 1. **Check Your app**
-    * Open Your App in the browser [https://kcert.agileguru.org](https://kcert.agileguru.org)
+    * Open Your App in the browser [https://kcert.learninguser.shop](https://learninguser.shop)
     * Should show valid certificate 😀
     * Certificate issued by [https://letsencrypt.org/](https://letsencrypt.org/)
