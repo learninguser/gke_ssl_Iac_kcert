@@ -7,6 +7,24 @@ metadata:
 
 availabilityZones: ["us-east-1a", "us-east-1b"]
 
+vpc:
+  id: "vpc-03c4f5328ede5d499" # (optional, must match VPC ID used for each subnet below)
+  cidr: "172.31.0.0/16" # (optional, must match CIDR used by the given VPC)
+  subnets:
+    # must provide 'private' and/or 'public' subnets by availability zone as shown
+    public:
+      us-east-1a:
+        id: "subnet-0e763fbc0d46b85a5"
+        cidr: "172.31.32.0/20" # (optional, must match CIDR used by the given subnet)
+
+      us-east-1b:
+        id: "subnet-0f21bec0a4e3861af"
+        cidr: "172.31.0.0/20" # (optional, must match CIDR used by the given subnet)
+
+      eu-north-1c:
+        id: "subnet-00f71956cdec8f1dc"
+        cidr: "192.168.0.0/19" # (optional, must match CIDR used by the given subnet)
+
 managedNodeGroups:
   - name: spot
     instanceType: t3.medium
