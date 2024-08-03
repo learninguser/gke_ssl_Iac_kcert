@@ -20,7 +20,7 @@ vpc:
 
       us-east-1b:
         id: "subnet-03bc7c7a492765526"
-        cidr: "172.31.0.0/20" # (optional, must match CIDR used by the given subnet)
+        cidr: "172.31.32.0/20" # (optional, must match CIDR used by the given subnet)
 
 managedNodeGroups:
   - name: spot
