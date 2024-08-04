@@ -62,7 +62,7 @@
         ```
 
 7. **Check Your app**
-    * Open Your App in the browser [https://kcert.learninguser.shop](https://learninguser.shop)
+    * Open Your App in the browser [https://kcert.learninguser.shop](https://kcert.learninguser.shop)
     * <img src="./images/kcert_k8s.png" width="600">
     * Should show valid certificate 😀
     * Certificate issued by [https://letsencrypt.org/](https://letsencrypt.org/)
